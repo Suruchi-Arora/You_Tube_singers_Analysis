@@ -13,7 +13,8 @@ This project showcases the power of using APIs to gain valuable insights and inf
 To deploy this project run
 
 ```bash
-streamlit run Deployment.py ```
+streamlit run Deployment.py 
+```
 
 
 

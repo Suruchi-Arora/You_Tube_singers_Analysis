@@ -5,6 +5,7 @@ import pandas as pd
 import seaborn as sn
 import time
 from matplotlib import pyplot as plt
+import plotly.express as px
 api_key='AIzaSyBWGf8pmToHEWpzZoxLwWsMNRLIK4QLJn0'
 
 channel_ids=['UCn3YGmLvUXFkHIT9_z4mRTQ',    #Neeti Mohan
@@ -70,7 +71,8 @@ def get_vdo_details(youtube,video_ids):
         video_stats=dict(Title=video['snippet']['title'],
                     # Published_date=video['snippet']['publishedAt'],
                     Likes=video['statistics']['likeCount'],
-                    Comments=video['statistics']['commentCount'])
+                    Comments=video['statistics']['commentCount'],
+                    Views=video['statistics']['viewCount'])
         all_video_stats.append(video_stats)
 
     return all_video_stats
@@ -112,30 +114,36 @@ def analyze(name,cid):
     #     i.str.split('|')
 
     video_df=pd.DataFrame(videoes_stats)
-    # st.dataframe(video_df)
+    st.subheader("\n Video Stats: ")
+    st.dataframe(video_df)
     
     # Modification of data types
     # video_df['Published_date']=pd.to_numeric(video_df['Published_date']).dt.date
-    # video_df['Views']=pd.to_numeric(video_df['Views'])
+    video_df['Views']=pd.to_numeric(video_df['Views'])
     video_df['Likes']=pd.to_numeric(video_df['Likes'])
     video_df['Comments']=pd.to_numeric(video_df['Comments'])
 
     def show_most_liked_vdo(video_df):
-        video_df.sort_values(by='Likes',ascending=False).head()["Title"]
+        temp=video_df.sort_values(by='Likes',ascending=False).head()["Title"]
+        temp
+    def show_most_viewed_vdo():
+        temp=video_df.sort_values(by='Views',ascending=False).head()["Title"]
+        temp
+    def show_most_commented_vdo():
+        temp=video_df.sort_values(by='Comments',ascending=False).head()["Title"]
+        temp
         
     # def show_most_commented_video(video_df):
     #     most_commented_df=video_df.sort_values(by='Comments').head()
     #     st.dataframe(most_commented_df[:,1:])
-
-
-    # how_much=st.sidebar.select_slider("Top most Videoes",options=[1,2,3,4,5])
-    st.subheader(f"Top 5 most Liked Videoes")
+    st.subheader("Top 5 most Liked Videoes")
     show_most_liked_vdo(video_df)             #function calling     
-       
-    # elif most_liked_optn=="Most Commented Video":
-    #     st.subheader("Top 3 most Commented Videoes")
-    #     show_most_commented_video(video_df)
-    
+
+    st.subheader("\n Top 5 most Viewed Videoes")      
+    show_most_viewed_vdo()
+
+    st.subheader("\n Top 5 most Commented Videoes")    
+    show_most_commented_vdo()
 
 
 
@@ -173,17 +181,21 @@ def home():
 
 def plots(type):
         st.subheader(f"Channel Name VS {type}")
-        fig,ax=plt.subplots(figsize=(6,4))
-        ax.barh(comp_df['Channel_name'],comp_df[type],color=['blue','black','#A890F0','red','green','#6890F0','purple',"#a9f971"])
-        # st.pyplot(fig, width='0.1')
-        st.pyplot()
+        # fig,ax=plt.subplots(figsize=(6,4))
+        # ax.barh(comp_df['Channel_name'],comp_df[type],color=['blue','black','#A890F0','red','green','#6890F0','purple',"#a9f971"])
 
-    
+        # # st.pyplot(fig, width='0.1')
+        # st.pyplot()
 
+    # Create a horizontal bar chart using Plotly Express
+        fig = px.bar(comp_df, x=type, y='Channel_name', color=type, orientation='h',color_discrete_sequence=["#a9f971"])
+
+        # Display the chart in Streamlit
+        st.plotly_chart(fig, use_container_width=True)
 
                                   
 #--------USER-----------           
-choice=st.sidebar.radio("Go To -",('HOME 🏠','SELECT ARTIST 🎤','COMPARISON'))
+choice=st.sidebar.radio("Go To -",('HOME 🏠','SELECT ARTIST 🎤','ALL ARTIST STATS'))
 if choice == 'HOME 🏠':
     home()
 elif choice=="SELECT ARTIST 🎤":
@@ -215,7 +227,7 @@ elif choice=="SELECT ARTIST 🎤":
         
         analyze(artist_name,cid)
 else:
-    st.title("Comparison")
+    st.title("ALL ARTIST STATS")
     comp_dict=get_multi_channel_stats(youtube,channel_ids) 
     comp_df=pd.DataFrame(comp_dict)
     # comp_df=pd.DataFrame.from_dict(comp_dict,columns=['CHANNEL NAME','SUBSCRIBERS','VIEW COUNT','TOTAL VIDEOES','PLAYLIST ID'])

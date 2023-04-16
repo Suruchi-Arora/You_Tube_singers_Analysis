@@ -1,6 +1,7 @@
 streamlit
 pandas
-googleapiclient.discovery.build
+googleapiclient
 seaborn
 time
-matplotlib.pyplot
+matplotlib
+plotly

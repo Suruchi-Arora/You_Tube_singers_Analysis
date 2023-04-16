@@ -35,7 +35,11 @@ import plotly.express as px
 ## Screenshots
 
 OUTPUT SCREENSHOTS
+https://github.com/Suruchi-Arora/You_Tube_singers_Analysis/blob/main/output1_screenshot.png
 
+https://github.com/Suruchi-Arora/You_Tube_singers_Analysis/blob/main/output_2_scrnsht.png
+
+https://github.com/Suruchi-Arora/You_Tube_singers_Analysis/blob/main/output_3.screenshot.png
 
 
 

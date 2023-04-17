@@ -6,7 +6,8 @@ import seaborn as sn
 import time
 from matplotlib import pyplot as plt
 import plotly.express as px
-api_key='AIzaSyBWGf8pmToHEWpzZoxLwWsMNRLIK4QLJn0'
+from config import api_key
+
 
 channel_ids=['UCn3YGmLvUXFkHIT9_z4mRTQ',    #Neeti Mohan
 'UCZRdNleCgW-BGUJf-bbjzQg',                 #Diljit Dosanjh
@@ -169,13 +170,12 @@ def home():
     with d:
         st.image("Neha Kakkar.jpeg")
     
-    st.markdown("With Analytics,one can better understand how any performance contributes to industry.ith Analytics, you can better understand how your performance contributes to your growth and success as an Artist. Use the guide below to understand what these metrics may mean to you.")
-    st.markdown("At the top, you’ll see different tabs. Apart from the overview tab, each tab is tailored to help you see data that’s most relevant to your goals.Note: On Studio Mobile, some reports and features may not be available.")
-    st.markdown("In addition, all tabs in Studio Mobile show combined data from your Official Artist Channel and other channels, except for the Revenue tab which includes data only for content uploaded by you.")
+    st.markdown("YouTube analytics provides a range of metrics that singers can use to track the performance of their videos. These metrics include views, watch time, engagement, and demographic data.")
+    st.markdown("By analyzing these metrics, singers can make informed decisions about their content strategy, identify their audience, and create content that resonates with them. The insights provided by YouTube analytics can help singers to increase their reach, engagement, and overall success on the platform.")
+  
 
     
-
-
+ 
 
 
 

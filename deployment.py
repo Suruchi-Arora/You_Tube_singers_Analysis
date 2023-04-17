@@ -175,7 +175,7 @@ def home():
     
     st.markdown("YouTube analytics provides a range of metrics that singers can use to track the performance of their videos. These metrics include views, watch time, engagement, and demographic data.")
     st.markdown("By analyzing these metrics, singers can make informed decisions about their content strategy, identify their audience, and create content that resonates with them. The insights provided by YouTube analytics can help singers to increase their reach, engagement, and overall success on the platform.")
-  
+    st.markdown("It is important for singers to have access to these metrics in order to optimize their content and grow their audience on YouTube.")
 
     
  

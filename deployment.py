@@ -6,7 +6,10 @@ import seaborn as sn
 import time
 from matplotlib import pyplot as plt
 import plotly.express as px
-from You_Tube_singers_Analysis.config import api_key
+import configparser
+config = configparser.ConfigParser()
+config.read('config.ini')
+api_key = config['DEFAULT']['API_KEY']
 
 
 channel_ids=['UCn3YGmLvUXFkHIT9_z4mRTQ',    #Neeti Mohan

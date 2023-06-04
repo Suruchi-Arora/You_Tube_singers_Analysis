@@ -6,11 +6,7 @@ import seaborn as sn
 import time
 from matplotlib import pyplot as plt
 import plotly.express as px
-# import configparser
-# config = configparser.ConfigParser()
-# config.read('config.ini')
-# api_key = config['DEFAULT']['API_KEY']
-api_key='AIzaSyBWGf8pmToHEWpzZoxLwWsMNRLIK4QLJn0'
+from config import api_key
 
 channel_ids=['UCn3YGmLvUXFkHIT9_z4mRTQ',    #Neeti Mohan
 'UCZRdNleCgW-BGUJf-bbjzQg',                 #Diljit Dosanjh
